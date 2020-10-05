@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1><strong>検索結果</strong></h1>
+              <table class="table">
+                <% if "book" == @model_name %>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Opinion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% @books.each do |book| %>
+                    <tr>
+                      <td>
+                      <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60"%>
+                      </td>
+                      <td><%=  book.title %></td>
+                      <td><%=  book.body %></td>
+                    </tr>
+                    <% end %>
+                    <% elsif %>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Introduction</th>
+                      </tr>
+                    </thead>
+                    <% @users.each do |user| %>
+                    <tr>
+                      <td>
+                      <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60"%>
+                      </td>
+                      <td><%=  user.name %></td>
+                      <td><%=  user.introduction %></td>
+                    </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
